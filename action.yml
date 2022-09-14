@@ -10,9 +10,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
@@ -21,22 +18,27 @@ runs:
     - name: Terraform Version
       id: version
       run: terraform version
+      shell: bash
 
     - name: Terraform Format
       id: fmt
       run: terraform fmt -check
+      shell: bash
 
     - name: Terraform Init
       id: init
       run: terraform init
+      shell: bash
 
     - name: Terraform Plan
       id: plan
       run: terraform plan -detailed-exitcode
+      shell: bash
       continue-on-error: true
 
     - name: Terraform Plan Status
       if: steps.plan.outcome == 'failure'
+      shell: bash
       run: |
         echo "Your IAC is adrift... fix it or fall prey to Davey Jones"
         exit 1
