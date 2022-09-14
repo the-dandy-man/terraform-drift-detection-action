@@ -37,6 +37,3 @@ runs:
       run: |
         echo "Your IAC is adrift... fix it or fall prey to Davey Jones"
         exit 1
-
-    - run: drift_check.sh
-      shell: bash
