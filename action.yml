@@ -20,11 +20,6 @@ runs:
       run: terraform version
       shell: bash
 
-    - name: Terraform Format
-      id: fmt
-      run: terraform fmt -check
-      shell: bash
-
     - name: Terraform Init
       id: init
       run: terraform init
